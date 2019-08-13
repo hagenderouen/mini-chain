@@ -1,4 +1,4 @@
-# mini-chain
+# Mini-chain
 Run a virtual blockchain on your local computer.
 
 ## Tools
@@ -14,11 +14,11 @@ Get the blockchain, mine blocks, and check if the blockchain is valid.
 2. Using Postman, send requests to http://127.0.0.1:5000/
 ### GET methods
 * get_chain - gets the full blockchain
-# mine_block - mines a new block
+* mine_block - mines a new block
 * is_valid - checks if the blockchain is valid
 
 ## Cryptocurrency 'Hadcoin' Demo
-Connect the blockchain nodes, add transactions, and mine blocks. For any blocks added, get consensus by calling /replace_chain. Get the blockchain and check if it is valid.
+Connect the blockchain nodes, add transactions, and mine blocks. For any blocks added, get consensus by calling replace_chain. Get the blockchain and check if it is valid.
 
 1. Run hadcoin_node_[port].py in separate consoles.
 2. Using Postman, send requests to http://127.0.0.1:[port]/
