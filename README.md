@@ -1,5 +1,5 @@
 # Mini-chain
-Run a virtual blockchain on your local computer.
+Run a virtual blockchain on your local computer. Special thanks to [Hadelin de Ponteves](https://www.udemy.com/user/hadelin-de-ponteves/)
 
 ## Tools
 * Any Python IDE
