@@ -40,5 +40,5 @@ Connect the blockchain nodes, add transactions, and mine blocks. For any blocks 
 * replace_chain - replaces the chain with the longest chain if needed
 
 ## Etherium Smart Contract
-Compile, deplay, and run transactions using Remix Etherium.
+Compile, deploy, and run transactions using Remix Etherium.
 Paste hadcoins_ico.sol into main panel.
