@@ -1,9 +1,9 @@
-# Module 2 - Create a Cryptocurrency
+# Create a Cryptocurrency
 
 # To be installed
 # Flask==0.12.2: pip install Flask==0.12.2
 # Postman http client: https://www.getpostman.com/
-# requests==2.18.4: pip install requests==2.18.4 
+# requests==2.18.4: pip install requests==2.18.4
 
 # Importing the libraries
 import datetime
@@ -16,13 +16,13 @@ from urllib.parse import urlparse
 
 # Part 1 - Building a blockchain
 class Blockchain:
-    
+
     def __init__(self):
         self.chain = []
         self.transactions = []
         self.create_block(proof = 1, previous_hash = '0')
         self.nodes = set()
-        
+
     def create_block(self, proof, previous_hash):
         block = {'index' : len(self.chain) + 1,
                  'timestamp' : str(datetime.datetime.now()),
@@ -32,10 +32,10 @@ class Blockchain:
         self.transactions = []
         self.chain.append(block)
         return block
-    
+
     def get_previous_block(self):
         return self.chain[-1]
-    
+
     def proof_of_work(self, previous_proof):
         new_proof = 1
         check_proof = False
@@ -46,11 +46,11 @@ class Blockchain:
             else:
                 new_proof += 1
         return new_proof
-    
+
     def hash(self, block):
         encoded_block = json.dumps(block, sort_keys = True).encode()
         return hashlib.sha256(encoded_block).hexdigest()
-    
+
     def is_chain_valid(self, chain):
         previous_block = chain[0]
         block_index = 1
@@ -66,18 +66,18 @@ class Blockchain:
             previous_block = block
             block_index += 1
         return True
-    
+
     def add_transaction(self, sender, receiver, amount):
         self.transactions.append({'sender': sender,
-                                  'receiver': receiver, 
+                                  'receiver': receiver,
                                   'amount': amount})
         previous_block = self.get_previous_block()
         return previous_block['index'] + 1
-    
+
     def add_node(self, address):
         parsed_url = urlparse(address)
         self.nodes.add(parsed_url.netloc)
-        
+
     def replace_chain(self):
         network = self.nodes
         longest_chain = None
@@ -94,8 +94,8 @@ class Blockchain:
             self.chain = longest_chain
             return True
         return False
-    
-# Part 2 - Mining our Blockchain
+
+# Mining our Blockchain
 
 # Creating a Web App
 app = Flask(__name__)
@@ -151,8 +151,8 @@ def add_transaction():
     response = {'message': f'this transaction will be added to Block {index}'}
     return jsonify(response), 201
 
-# Part 3 - Decentralizing our Blockchain
-    
+# Decentralizing our Blockchain
+
 # Connecting new nodes
 @app.route('/connect_node', methods = ['POST'])
 def connect_node():
@@ -176,7 +176,7 @@ def replace_chain():
     else:
         response = {'message': 'All good. The chain is the longest one.',
                     'actual_chain': blockchain.chain}
-    return jsonify(response), 200 
+    return jsonify(response), 200
 
 # Running the app
 app.run(host = '0.0.0.0', port = 5002)
